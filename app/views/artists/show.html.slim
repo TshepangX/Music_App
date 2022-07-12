@@ -1,0 +1,19 @@
+h3 
+    =link_to "Home", root_path  
+
+h1  
+    =@artist.name
+h3 
+    = "This artist's albums"
+    ul 
+        -@artist.albums.each do |album|
+            li
+                = link_to album.title, album
+
+h4
+
+ul 
+    li  
+        =link_to "Edit Artist", edit_artist_path
+    li 
+        =link_to "Remove Artist", artist_path, method: :delete, data: {confrim: "Do you want to continue?"}

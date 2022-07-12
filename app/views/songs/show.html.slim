@@ -1,0 +1,66 @@
+h3 
+    =link_to "Home", root_path  
+h1 
+    =@song.title
+h3
+    = "Artist"
+li 
+    =@song.artist.name
+br
+h3    
+
+    ="Duration"
+br
+    =@song.duration
+br 
+h3
+    ="Genre"
+br 
+    =@song.genre.title
+br
+h3 
+    ="released"
+br
+    =@song.released
+br
+h3 
+    ="Album"
+br
+    =link_to @song.album.title, album_path(@song.album)
+
+= form_with url: song_ratings_url(@song)   do |form|
+     br
+        div 
+            =form.label :score
+     br
+        div 
+            =form.select :score, (0..5)
+        div 
+            =form.submit
+     br
+h3 
+    ="This song's ratings"
+
+
+    ul 
+        - @song.ratings.each do |rating|
+            li
+                = rating.score
+            div  
+                = link_to "Delete Rating", [rating.song, rating], method: :delete 
+
+
+h3 average rating   
+= @score
+
+
+
+
+ 
+
+
+ul 
+    li 
+        = link_to "Edit Song", edit_song_path 
+    li 
+        = link_to "Delete Song", song_path, method: :delete, data: {confirm: "Are you sure you want to delete an entire album?"}

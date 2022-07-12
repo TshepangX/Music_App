@@ -1,0 +1,13 @@
+h3 
+    =link_to "Home", root_path 
+
+
+h1 Songs
+ul
+    -@songs.each do |song|
+        li 
+            = link_to song.title, song   
+            
+li 
+     =link_to "Add song", new_song_path
+

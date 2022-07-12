@@ -1,0 +1,21 @@
+h1 Artists
+ul
+    -@artists.each do |artist| 
+        li
+            =link_to artist.name, artist
+             
+
+li 
+    =link_to "New Artist", new_artist_path
+li 
+    =link_to "Albums", albums_path
+li 
+    = link_to "Songs", songs_path
+li
+    = link_to "Genres", genres_path
+
+
+ 
+    
+ 
+

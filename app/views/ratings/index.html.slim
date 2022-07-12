@@ -1,0 +1,11 @@
+h3
+    =link_to "Home", root_path  
+h1 Songs By Ratings
+ul
+    -@rating.each do |rating|
+    li 
+        =link_to rating.score, rating
+
+       
+
+

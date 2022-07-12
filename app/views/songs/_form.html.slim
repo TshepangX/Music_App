@@ -1,0 +1,32 @@
+    = form_with model: song do |form|
+        div 
+            =form.label :title
+        div 
+            =form.text_field :title 
+        br
+        div 
+            =form.label :duration
+        div 
+            =form.text_field :duration
+        br 
+        div 
+            =form.label :artist
+        div 
+            =form.select :artist_id, Artist.pluck(:name, :id)
+        br 
+        div 
+            =form.label :album
+        div 
+            =form.select :album_id, Album.pluck(:title, :id)
+        br 
+        div 
+            =form.label :genre
+        div
+            =form.select :genre_id, Genre.pluck(:title, :id)
+        br
+        div 
+            =form.label :released
+        div 
+            =form.date_select :released
+        div 
+            =form.submit

@@ -1,0 +1,23 @@
+=form_with model: album do |form|
+
+    div 
+        = form.label :title
+    div
+        = form.text_field :title       
+    br
+    div 
+        =form.label :year
+    div 
+        =form.date_field :year
+    br
+    div 
+        =form.label :artist_id 
+    div 
+        =form.select :artist_id, Artist.pluck(:name, :id)
+    br 
+    div 
+        =form.label :genre
+    div
+        =form.select :genre_id, Genre.pluck(:title, :id)    
+    div 
+        = form.submit

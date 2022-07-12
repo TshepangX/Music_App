@@ -1,0 +1,20 @@
+h3 
+    =link_to "Home", root_path 
+
+h1 
+    =@genre.title
+h3 
+    ="Songs in this genre"
+    ul 
+        -@songs.each do |song|
+            li 
+                = link_to song.title, song 
+            li  = song.ratings.average(:score)
+
+
+h4 
+ul 
+    li 
+        =link_to "Edit Genre", edit_genre_path 
+    li 
+        =link_to "Remove Genre", genre_path, method: :delete, data: {confrim: "Do you want to continue?"}
