@@ -5,11 +5,42 @@ h1
     =@genre.title
 h3 
     ="Songs in this genre"
-    ul 
-        -@songs.each do |song|
-            li 
-                = link_to song.title, song 
-            li  = song.ratings.average(:score)
+ul 
+    -@songs.each do |song|
+        li
+            = "Song and rating"
+        li
+            = link_to song.title, song  
+            = RatingAverageCalculator.average(song)
+        br
+        li
+            = "Album title"    
+        li       
+            = link_to song.album.title, song
+        br
+        li
+            ="Artist"
+        li 
+            = link_to song.artist.name, song
+        br
+        li 
+            = "duration"
+        li 
+            = song.duration
+        br
+        li 
+            ="released"
+        li 
+            = song.released.strftime("%Y %B %d")
+        br
+        br
+        br
+           
+             
+        
+            
+                
+           
 
 
 h4 

@@ -1,0 +1,45 @@
+h3 
+    =link_to "Home", root_path 
+
+h1 Search by year 
+= form_with method: :get do |form|
+    div 
+        = form.label :year
+        = form.date_field :start_date, value: params[:start_date]
+    div 
+        = form.label :year
+        = form.date_field :end_date, value: params[:end_date]
+    div
+        =form.submit
+
+
+        ul 
+            -@songs.each do |song|
+                li
+                    = "Song and rating"
+                li
+                    = link_to song.title, song  
+                    = RatingAverageCalculator.average(song)
+                br
+                li
+                    = "Album title"    
+                li       
+                    = link_to song.album.title, song
+                br
+                li
+                    ="Artist"
+                li 
+                    = link_to song.artist.name, song
+                br
+                li 
+                    = "duration"
+                li 
+                    = song.duration
+                br
+                li 
+                    ="released"
+                li 
+                    = song.released.strftime("%Y %B %d")
+                br
+                br
+                br

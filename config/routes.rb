@@ -10,4 +10,7 @@ Rails.application.routes.draw do
     resources :songs
   end 
 
+  get "/years", to: "years#index"
+
+
 end
